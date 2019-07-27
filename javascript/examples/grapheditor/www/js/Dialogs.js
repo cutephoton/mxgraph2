@@ -1923,7 +1923,7 @@ var OutlineWindow = function(editorUi, x, y, w, h)
 		var iw = window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth;
 		var ih = window.innerHeight || document.body.clientHeight || document.documentElement.clientHeight;
 		
-		x = Math.max(0, Math.min(x, iw - this.table.clientWidth));
+		x = Math.max(0, Math.min(x, iw - this.table.clientWidth - 2));
 		y = Math.max(0, Math.min(y, ih - this.table.clientHeight - 48));
 
 		if (this.getX() != x || this.getY() != y)
@@ -2653,8 +2653,7 @@ var LayersWindow = function(editorUi, x, y, w, h)
 	{
 		var iw = window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth;
 		var ih = window.innerHeight || document.body.clientHeight || document.documentElement.clientHeight;
-		
-		x = Math.max(0, Math.min(x, iw - this.table.clientWidth));
+		x = Math.max(0, Math.min(x, iw - this.table.clientWidth - 2));
 		y = Math.max(0, Math.min(y, ih - this.table.clientHeight - 48));
 
 		if (this.getX() != x || this.getY() != y)
