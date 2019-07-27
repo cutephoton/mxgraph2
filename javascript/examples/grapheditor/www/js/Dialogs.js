@@ -1931,6 +1931,17 @@ var OutlineWindow = function(editorUi, x, y, w, h)
 			mxWindow.prototype.setLocation.apply(this, arguments);
 		}
 	};
+
+	this.window.setSize = function(width,height)
+	{
+		var iw = window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth;
+		var ih = window.innerHeight || document.body.clientHeight || document.documentElement.clientHeight;
+
+		width = Math.max(0, Math.min(iw-x-2, width));
+		height = Math.max(0, Math.min(ih-y-48, height));
+
+		mxWindow.prototype.setSize.apply(this, arguments);
+	};
 	
 	var resizeListener = mxUtils.bind(this, function()
 	{
@@ -2660,6 +2671,17 @@ var LayersWindow = function(editorUi, x, y, w, h)
 		{
 			mxWindow.prototype.setLocation.apply(this, arguments);
 		}
+	};
+
+	this.window.setSize = function(width,height)
+	{
+		var iw = window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth;
+		var ih = window.innerHeight || document.body.clientHeight || document.documentElement.clientHeight;
+
+		width = Math.max(0, Math.min(iw-x-2, width));
+		height = Math.max(0, Math.min(ih-y-48, height));
+
+		mxWindow.prototype.setSize.apply(this, arguments);
 	};
 	
 	var resizeListener = mxUtils.bind(this, function()
