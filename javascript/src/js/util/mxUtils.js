@@ -4382,6 +4382,16 @@ var mxUtils =
 		}
 		
 		return dragSource;
+	},
+	/**
+	 * Function: clamp
+	 *
+	 * Limits the range of a value. Essentially replaces this
+	 * one liner boilerplate.
+	 *
+	 * min(upper,max(lower,value))
+	 */
+	clamp : function(lower,value,upper) {
+		return Math.min(upper,Math.max(lower,value))
 	}
-
 };
