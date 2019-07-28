@@ -1389,7 +1389,6 @@ ExportDialog.saveLocalFile = function(editorUi, data, filename, format)
 		mxUtils.popup(xml);
 	}
 };
-
 /**
  * Constructs a new metadata dialog.
  */
@@ -1478,13 +1477,39 @@ var EditDataDialog = function(ui, cell)
 		parent.appendChild(wrapper);
 	};
 	
+	var initPropertyField = function(name, value)
+	{
+		var text = form.addTextarea(name + ':', value, 2);
+
+		function autosizeHandler()
+		{
+			text.style.height = 'auto';
+			var bodyHeight = Math.min(150,text.scrollHeight+5);
+			text.style.height = bodyHeight > 10 ? (bodyHeight + 'px'):('auto');
+		}
+
+		function inactiveMode ()
+		{
+			text.style.height = 'auto';
+		}
+
+		text.style.boxSizing = 'border-box';
+		text.style.resize = 'none';
+		text.style.width = '100%';
+		text.style.height = 'auto';
+		mxEvent.addListener(text, 'input',  autosizeHandler);
+		mxEvent.addListener(text, 'change', autosizeHandler);
+		mxEvent.addListener(text, 'focus', 	autosizeHandler);
+		mxEvent.addListener(text, 'blur', 	inactiveMode);
+		addRemoveButton(text, name);
+
+		return text
+	}
+
 	var addTextArea = function(index, name, value)
 	{
 		names[index] = name;
-		texts[index] = form.addTextarea(names[count] + ':', value, 2);
-		texts[index].style.width = '100%';
-		
-		addRemoveButton(texts[index], name);
+		texts[index] = initPropertyField(names[count] + ':', value, 2);
 	};
 	
 	var temp = [];
@@ -1583,11 +1608,8 @@ var EditDataDialog = function(ui, cell)
 					}
 
 					names.push(name);
-					var text = form.addTextarea(name + ':', '', 2);
-					text.style.width = '100%';
+					text = initPropertyField(name,'');
 					texts.push(text);
-					addRemoveButton(text, name);
-
 					text.focus();
 				}
 
