@@ -1638,7 +1638,6 @@ var EditDataDialog = function(ui, cell)
 			nameInput.focus();
 		}
 	};
-	
 	addBtn.setAttribute('title', mxResources.get('addProperty'));
 	addBtn.setAttribute('disabled', 'disabled');
 	addBtn.style.textOverflow = 'ellipsis';
@@ -1646,7 +1645,9 @@ var EditDataDialog = function(ui, cell)
 	addBtn.style.overflow = 'hidden';
 	addBtn.style.width = '144px';
 	addBtn.style.right = '0px';
-	addBtn.className = 'geBtn';
+	//The stylized geBtn is makes an unaligned off center
+	//button next to an unstylized input
+	//addBtn.className = 'geBtn';
 	newProp.appendChild(addBtn);
 
 	var cancelBtn = mxUtils.button(mxResources.get('cancel'), function()
